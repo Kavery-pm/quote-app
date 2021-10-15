@@ -1,4 +1,7 @@
-const QuoteDetail = ()=>{
-   return <h1>QUOTE DETAIL</h1>
-    }
-    export default QuoteDetail;
+import { useParams } from "react-router";
+
+const QuoteDetail = () => {
+  const params = useParams();
+  return <h1>QUOTE DETAIL{params.quoteId}</h1>;
+};
+export default QuoteDetail;
