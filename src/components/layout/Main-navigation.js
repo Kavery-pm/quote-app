@@ -8,7 +8,7 @@ const MainNavigation = () => {
         <ul>
           <li><NavLink activeClassName={classes.active} to='/quotes'>All Quotes</NavLink></li>
           <li><NavLink activeClassName={classes.active} to='/quotes/:quoteId'>QuoteDetail</NavLink></li>
-          <li><NavLink activeClassName={classes.active} to='/new-quotes'>New Quotes</NavLink></li>
+          <li><NavLink activeClassName={classes.active} to='/new-quote'>New Quotes</NavLink></li>
         </ul>
       </nav>
     </header>

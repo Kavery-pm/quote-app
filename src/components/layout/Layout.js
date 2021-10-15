@@ -4,9 +4,9 @@ import classes from "./Layout.module.css";
 const Layout = (props) => {
   return (
     <React.Fragment>
-      <MainNavigation>
+      <MainNavigation/>
         <main className={classes.main}>{props.children}</main>
-      </MainNavigation>
+    
     </React.Fragment>
   );
 };
