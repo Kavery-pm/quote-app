@@ -1,13 +1,16 @@
 import { Fragment } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 
 import QuoteItem from './QuoteItem';
 import classes from './QuoteList.module.css';
 
 const QuoteList = (props) => {
   const history = useHistory();
+  const location = useLocation();
+  console.log(location);
   const changeSortingHandler = ()=>{
     history.push('/quotes?sort=asc');
+
   }
   return (
     <Fragment>
