@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { Prompt } from "react-router";
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -20,9 +21,12 @@ const QuoteForm = (props) => {
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
   const focusHandler = () => {
+    console.log('focus');
     setisEntering(true);
   };
   return (
+    <React.Fragment>
+      <Prompt when={isEntering} message={(location)=>'are you sure you want to quit'}/>
     <Card>
       <form
         className={classes.form}
@@ -48,6 +52,7 @@ const QuoteForm = (props) => {
         </div>
       </form>
     </Card>
+    </React.Fragment>
   );
 };
 
