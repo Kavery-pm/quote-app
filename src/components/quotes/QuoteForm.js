@@ -21,37 +21,45 @@ const QuoteForm = (props) => {
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
   const focusHandler = () => {
-    console.log('focus');
+    console.log("focus");
     setisEntering(true);
+  };
+  const finishEnteringHandler = () => {
+    setisEntering(false);
   };
   return (
     <React.Fragment>
-      <Prompt when={isEntering} message={(location)=>'are you sure you want to quit'}/>
-    <Card>
-      <form
-        className={classes.form}
-        onSubmit={submitFormHandler}
-        onFocus={focusHandler}
-      >
-        {props.isLoading && (
-          <div className={classes.loading}>
-            <LoadingSpinner />
-          </div>
-        )}
+      <Prompt
+        when={isEntering}
+        message={(location) => "are you sure you want to quit"}
+      />
+      <Card>
+        <form
+          className={classes.form}
+          onSubmit={submitFormHandler}
+          onFocus={focusHandler}
+        >
+          {props.isLoading && (
+            <div className={classes.loading}>
+              <LoadingSpinner />
+            </div>
+          )}
 
-        <div className={classes.control}>
-          <label htmlFor="author">Author</label>
-          <input type="text" id="author" ref={authorInputRef} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor="text">Text</label>
-          <textarea id="text" rows="5" ref={textInputRef}></textarea>
-        </div>
-        <div className={classes.actions}>
-          <button className="btn">Add Quote</button>
-        </div>
-      </form>
-    </Card>
+          <div className={classes.control}>
+            <label htmlFor="author">Author</label>
+            <input type="text" id="author" ref={authorInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor="text">Text</label>
+            <textarea id="text" rows="5" ref={textInputRef}></textarea>
+          </div>
+          <div className={classes.actions}>
+            <button onClick={finishEnteringHandler} className="btn">
+              Add Quote
+            </button>
+          </div>
+        </form>
+      </Card>
     </React.Fragment>
   );
 };
