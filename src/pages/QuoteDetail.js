@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, useParams } from "react-router";
+import { Route, useParams, Link } from "react-router-dom";
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 const DUMMY_QUOTES = [
@@ -13,7 +13,10 @@ const QuoteDetail = () => {
   return (
     <React.Fragment>
      <HighlightedQuote text={quote.text} author={quote.author}/>
-      <Route path={`/quotes/${params.quoteId}/comments`}>
+     <div className='centered'>
+         <Link className='btn--flat' to={`/quotes/${params.quoteId}/comments`}>Load comments</Link>
+     </div>
+      <Route to={`/quotes/${params.quoteId}/comments`}>
         <Comments></Comments>
       </Route>
     </React.Fragment>
