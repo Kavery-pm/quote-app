@@ -1,17 +1,19 @@
-import { Fragment } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { Fragment } from "react";
+import { useHistory, useLocation } from "react-router";
 
-import QuoteItem from './QuoteItem';
-import classes from './QuoteList.module.css';
+import QuoteItem from "./QuoteItem";
+import classes from "./QuoteList.module.css";
 
 const QuoteList = (props) => {
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
-  const changeSortingHandler = ()=>{
-    history.push('/quotes?sort=asc');
+  const queryParams = new URLSearchParams(location.search);
 
-  }
+  const isSortAscending = queryParams.get("sort") === "asc";
+
+  const changeSortingHandler = () => {
+    history.push("/quotes?sort=asc");
+  };
   return (
     <Fragment>
       <div className={classes.sorting}>
