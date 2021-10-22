@@ -9,13 +9,18 @@ const DUMMY_QUOTES = [
 const QuoteDetail = () => {
   const params = useParams();
   const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
-  if(!quote) return <p>Quote not found</p>
+  if (!quote) return <p>Quote not found</p>;
   return (
     <React.Fragment>
-     <HighlightedQuote text={quote.text} author={quote.author}/>
-     <div className='centered'>
-         <Link className='btn--flat' to={`/quotes/${params.quoteId}/comments`}>Load comments</Link>
-     </div>
+      <HighlightedQuote text={quote.text} author={quote.author} />
+      <Route path={`/quotes/${params.quoteId}`} exact>
+        <div className="centered">
+          <Link className="btn--flat" to={`/quotes/${params.quoteId}/comments`}>
+            Load comments
+          </Link>
+        </div>
+      </Route>
+
       <Route to={`/quotes/${params.quoteId}/comments`}>
         <Comments></Comments>
       </Route>
